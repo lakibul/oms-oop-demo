@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class OrderProcessor
 {
     public string $customerName;
@@ -24,16 +26,47 @@ class OrderProcessor
         }
         return $total;
     }
-    
-}
 
-$order = new OrderProcessor(
-    "John Doe",
-    "Regular",
-    [
-        ['name' => 'Product 1', 'price' => 10.0, 'quantity' => 2],
-        ['name' => 'Product 2', 'price' => 15.0, 'quantity' => 1],
-    ],
-    "Credit Card"
-);
-echo "Total Amount: " . $order->calculateTotal();
+    public function payment(): string
+    {
+        if ($this->paymentType === "Credit Card") {
+            return "Processing payment via Credit Card.";
+        } elseif ($this->paymentType === "PayPal") {
+            return "Processing payment via PayPal.";
+        } else {
+            return "Payment method not supported.";
+        }
+    }
+
+    public function stock()
+    {
+        //decrement stock of products
+        foreach ($this->products as $product) {
+            // Assuming we have a method to decrement stock
+            $this->decrementStock($product['name'], $product['quantity']);
+        }
+    }
+
+    private function decrementStock(string $productName, int $quantity)
+    {
+        echo "Decrementing stock for {$productName} by {$quantity} units.\n";
+    }
+
+    public function persistence() : void
+    {
+        // Logic to persist order data to a database or storage
+        echo "Persisting order data for customer: {$this->customerName}.\n";
+    }
+
+    public function notification() : void
+    {
+        // Logic to send notification to the customer
+        echo "Sending notification to {$this->customerName} about the order.\n";
+    }
+
+    public function status(): string
+    {
+        return "Order is being processed.";
+    }
+
+}
