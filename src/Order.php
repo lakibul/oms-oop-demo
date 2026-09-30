@@ -2,7 +2,7 @@
 
 namespace App;
 
-class OrderProcessor
+class Order
 {
     public string $customerName;
     public string $customerType;
