@@ -90,10 +90,10 @@ A simplified order management system demonstrating production-grade OOP, tested 
 - One Git commit per phase, with a clear message — the commit history itself becomes part of the portfolio story.
 
 ### High-Level Plan / Todo
-- [ ] Phase 0 — Project setup
-- [ ] Phase 1 — Naive baseline (deliberately bad)
-- [ ] Phase 2 — Classes, Objects, Encapsulation **+ validating constructors**
-- [ ] Phase 3 — Inheritance & Polymorphism
+- [x] Phase 0 — Project setup
+- [x] Phase 1 — Naive baseline (deliberately bad)
+- [x] Phase 2 — Classes, Objects, Encapsulation **+ validating constructors**
+- [x] Phase 3 — Inheritance & Polymorphism
 - [ ] Phase 4 — Interfaces, SRP split, **Loggable trait (multiple inheritance)** **+ first PHPUnit suite**
 - [ ] Phase 5 — OCP + Factory Pattern **+ static vs instance (static factory method, static counter) + tests**
 - [ ] Phase 6 — LSP + Access Modifiers **+ overriding vs overloading + substitutability tests**
@@ -110,9 +110,9 @@ A simplified order management system demonstrating production-grade OOP, tested 
 ## Part 3 — Phase-by-Phase Execution Guide
 
 ### Phase 0 — Setup (30 min)
-- [ ] Create `src/`, `tests/`, `README.md`, `composer.json` (PSR-4 autoload).
-- [ ] Add PHPUnit via Composer (`composer require --dev phpunit/phpunit`).
-- [ ] Empty `README.md` — one entry per phase becomes your case study.
+- [x] Create `src/`, `tests/`, `README.md`, `composer.json` (PSR-4 autoload).
+- [x] Add PHPUnit via Composer (`composer require --dev phpunit/phpunit`).
+- [x] Empty `README.md` — one entry per phase becomes your case study.
 
 ---
 
@@ -123,7 +123,7 @@ A simplified order management system demonstrating production-grade OOP, tested 
 
 **Claude Code prompt:** *"List every distinct responsibility this class currently handles."*
 
-- [ ] Phase 1 done. README entry: what feels wrong already.
+- [x] Phase 1 done. README entry: what feels wrong already.
 
 ---
 
@@ -134,7 +134,7 @@ A simplified order management system demonstrating production-grade OOP, tested 
 
 **Claude Code prompt:** *"Any properties still exposed that should be private? Does every constructor actually validate its inputs, or just assign them blindly?"*
 
-- [ ] Phase 2 done.
+- [x] Phase 2 done.
 
 ---
 
@@ -145,7 +145,7 @@ A simplified order management system demonstrating production-grade OOP, tested 
 
 **Claude Code prompt:** *"Ask me three questions testing whether I understand why this is polymorphism."*
 
-- [ ] Phase 3 done.
+- [x] Phase 3 done.
 
 ---
 

@@ -2,15 +2,47 @@
 
 namespace App;
 
+use InvalidArgumentException;
+
 class Order
 {
-    public string $customerName;
-    public string $customerType;
-    public array  $products;
-    public string $paymentType;
-    
+    private string $customerName;
+    private string $customerType;
+    private array  $products;
+    private string $paymentType;
+
     public function __construct(string $customerName, string $customerType, array $products, string $paymentType)
     {
+        if (trim($customerName) === '') {
+            throw new InvalidArgumentException('Customer name cannot be empty.');
+        }
+
+        if (trim($customerType) === '') {
+            throw new InvalidArgumentException('Customer type cannot be empty.');
+        }
+
+        if (trim($paymentType) === '') {
+            throw new InvalidArgumentException('Payment type cannot be empty.');
+        }
+
+        if (empty($products)) {
+            throw new InvalidArgumentException('An order must contain at least one product.');
+        }
+
+        foreach ($products as $product) {
+            if (!isset($product['name'], $product['price'], $product['quantity'])) {
+                throw new InvalidArgumentException('Each product must have a name, price, and quantity.');
+            }
+
+            if ($product['price'] < 0) {
+                throw new InvalidArgumentException("Product price cannot be negative: {$product['price']}");
+            }
+
+            if ($product['quantity'] <= 0) {
+                throw new InvalidArgumentException("Product quantity must be greater than zero: {$product['quantity']}");
+            }
+        }
+
         $this->customerName = $customerName;
         $this->customerType = $customerType;
         $this->products = $products;

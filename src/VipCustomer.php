@@ -11,7 +11,6 @@ class VipCustomer extends Customer
 
     public function getDiscount(): float
     {
-        // VIP customers receive a 10% discount
         return 0.10;
     }
 }

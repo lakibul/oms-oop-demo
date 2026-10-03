@@ -11,7 +11,6 @@ class RegularCustomer extends Customer
 
     public function getDiscount(): float
     {
-        // Regular customers do not receive a discount
         return 0.0;
     }
 }

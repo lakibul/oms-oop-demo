@@ -2,15 +2,30 @@
 namespace App;
 
 use App\Order;
+use InvalidArgumentException;
 
-class Customer
+abstract class Customer
 {
-    public string $name;
-    public string $type;
-    public array  $orders;
+    private string $name;
+    private string $type;
+    private array  $orders;
 
     public function __construct(string $name, string $type, array $orders = [])
     {
+        if (trim($name) === '') {
+            throw new InvalidArgumentException('Customer name cannot be empty.');
+        }
+
+        if (trim($type) === '') {
+            throw new InvalidArgumentException('Customer type cannot be empty.');
+        }
+
+        foreach ($orders as $order) {
+            if (!$order instanceof Order) {
+                throw new InvalidArgumentException('Every order must be an instance of Order.');
+            }
+        }
+
         $this->name = $name;
         $this->type = $type;
         $this->orders = $orders;
@@ -44,4 +59,6 @@ class Customer
         }
         return $total;
     }
+
+    abstract public function getDiscount(): float;
 }
